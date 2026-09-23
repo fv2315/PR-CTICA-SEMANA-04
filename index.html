@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Deportivo - Semana 4</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="top-banner">
+        🏀 SPORT-TECH LAB: Animaciones y Rendimiento Web (Vanilla JS)
+    </header>
+    
+    <main class="full-layout">
+        
+        <!-- PASO 1: CANVASS DEPORTIVO -->
+        <section class="demo-section">
+            <div class="section-header">
+                <div class="title-row">
+                    <span class="icon-number">❶</span>
+                    <h2>Setup Canvas: Cancha de Baloncesto Pro</h2>
+                </div>
+                <p>Efecto 1: Estela de Movimiento (Motion Blur) | Efecto 2: Rotación Dinámica de Baloncesto con Neón.</p>
+                <span class="badge">✓ Paso 1 Activo</span>
+            </div>
+            <div class="controls-bar">
+                <button id="btn-play" class="btn btn-blue">▶ Iniciar Partido</button>
+                <button id="btn-pause" class="btn btn-red">⏸ Tiempo Fuera</button>
+                <button id="btn-reset" class="btn btn-green">⟳ Reiniciar</button>
+                <input type="text" id="nameInput" placeholder="Equipo" value="LOS LAKERS">
+                <input type="range" id="speedInput" min="1" max="10" value="6">
+                <label for="speedInput" class="speed-label">Velocidad: <span id="speedValue">6</span></label>
+            </div>
+            <div class="canvas-container">
+                <canvas id="demoCanvas" width="900" height="350"></canvas>
+            </div>
+        </section>
+
+        <!-- PASO 2: TABLERO DE ANOTACIONES (CLOSURES) -->
+        <section class="demo-section">
+            <div class="section-header">
+                <div class="title-row">
+                    <span class="icon-number">❷</span>
+                    <h2>Tablero IIFE + Closures (Estado de Juego)</h2>
+                </div>
+                <p>Efecto 1: Animación Pop de Puntuación | Efecto 2: Botón con Pulso de Neón Encapsulado.</p>
+                <span class="badge">✓ Paso 2 Activo</span>
+            </div>
+            <div class="closure-demo">
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <span id="frameCount" class="stat-value">0</span>
+                        <span class="stat-label">Tiempo (Frames)</span>
+                    </div>
+                    <div class="stat-box">
+                        <span id="clickCount" class="stat-value text-purple">0</span>
+                        <span class="stat-label">Anotaciones (Clicks)</span>
+                    </div>
+                    <div class="stat-box">
+                        <span id="lastAction" class="stat-value text-blue">Ninguna</span>
+                        <span class="stat-label">Última Jugada</span>
+                    </div>
+                </div>
+                <button id="btn-increment" class="btn btn-purple glow-btn" style="margin-top: 20px;">⚡ Anotar Jugada (Closure Activo)</button>
+            </div>
+        </section>
+
+        <!-- PASO 3: MANIPULACIÓN DOM DEPORTIVA -->
+        <section class="demo-section">
+            <div class="section-header">
+                <div class="title-row">
+                    <span class="icon-number">❸</span>
+                    <h2>Manipulación DOM + Validación de Atletas</h2>
+                </div>
+                <p>Efecto 1: Escudo Neón 3D | Efecto 2: Animación de Dribble en Cancha.</p>
+                <span class="badge">✓ Paso 3 Activo</span>
+            </div>
+            <div class="dom-demo-container">
+                <div style="margin-bottom: 20px;">
+                    <input type="text" id="playerInput" placeholder="N° Camiseta (0-99)" style="width: 200px;">
+                    <span id="validationMsg" class="error-msg"></span>
+                </div>
+                <div id="demoBox" class="demo-box">
+                    <span id="boxText">Estadio PRO</span>
+                </div>
+                <div class="controls-bar" style="justify-content: center; margin-top: 25px; background: transparent; border: none;">
+                    <button id="btn-highlight" class="btn btn-blue">✨ Efecto 1: Escudo Neón</button>
+                    <button id="btn-pulse" class="btn btn-green">🏀 Efecto 2: Dribble en Cancha</button>
+                    <button id="btn-reset-box" class="btn btn-red">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 4: TORNEO DE PARTÍCULAS -->
+        <section class="demo-section">
+            <div class="section-header">
+                <div class="title-row">
+                    <span class="icon-number">❹</span>
+                    <h2>Torneo de Balones + requestAnimationFrame</h2>
+                </div>
+                <p>Efecto 1: Destellos Radiales (Glow Deportivo) | Efecto 2: Rebote Multidireccional con Delta Time.</p>
+                <span class="badge">✓ Paso 4 Activo</span>
+            </div>
+            <div class="canvas-container">
+                <canvas id="canvasStep4" width="900" height="350" style="background-color: #0d0d12; border-radius: 8px;"></canvas>
+            </div>
+            <div class="controls-bar" style="justify-content: center; margin-top: 15px;">
+                <button id="btn-start-4" class="btn btn-blue">▶ Iniciar Torneo</button>
+                <button id="btn-stop-4" class="btn btn-red">⏹ Pausar Torneo</button>
+                <button id="btn-add-4" class="btn btn-green">✨ Lanzar Nuevo Balón</button>
+            </div>
+        </section>
+
+        <!-- PASO 5: SCOUTING Y RENDIMIENTO -->
+        <section class="demo-section">
+            <div class="section-header">
+                <div class="title-row">
+                    <span class="icon-number">❺</span>
+                    <h2>Scouting de Rendimiento & Memoria V8</h2>
+                </div>
+                <p>Efecto 1: Historial de FPS en Tiempo Real | Efecto 2: Alerta de Carga de Memoria Heap.</p>
+                <span class="badge">✓ Paso 5 Activo</span>
+            </div>
+            
+            <div class="perf-dashboard">
+                <div class="perf-header">
+                    <h3>📈 Monitor de Rendimiento Deportivo (Scouting)</h3>
+                    <span id="health-badge" class="health-badge">EN FORMA</span>
+                </div>
+                
+                <div class="perf-stats">
+                    <div class="perf-stat-box">
+                        <span id="fpsValue" class="perf-val">0</span>
+                        <span class="perf-label">FPS (Fluidez)</span>
+                    </div>
+                    <div class="perf-stat-box">
+                        <span id="memValue" class="perf-val">0.00</span>
+                        <span class="perf-label">Memoria (MB)</span>
+                    </div>
+                    <div class="perf-stat-box">
+                        <span id="listenersValue" class="perf-val">32</span>
+                        <span class="perf-label">Sensores Activos</span>
+                    </div>
+                    <div class="perf-stat-box">
+                        <span id="leaksValue" class="perf-val">0</span>
+                        <span class="perf-label">Fugas (Leaks)</span>
+                    </div>
+                </div>
+
+                <div class="perf-chart-container">
+                    <p class="chart-title">HISTORIAL DE TAZA DE FOTOGRAMAS (FPS)</p>
+                    <canvas id="fpsChart" width="850" height="100"></canvas>
+                </div>
+
+                <div class="perf-memory-bar">
+                    <div class="chart-title" style="display:flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Consumo de Memoria Heap V8</span>
+                        <span id="heapPercent">0%</span>
+                    </div>
+                    <div class="progress-bg">
+                        <div id="heapProgress" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="controls-bar" style="justify-content: center; margin-top: 25px; background: transparent; border: none; padding: 0;">
+                    <button id="btn-analyze" class="btn btn-blue">🔍 Ejecutar Profiler</button>
+                    <button id="btn-leak" class="btn btn-red">⚠️ Simular Fatiga (Leak)</button>
+                    <button id="btn-clean" class="btn btn-green">🧹 Recuperación (GC)</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

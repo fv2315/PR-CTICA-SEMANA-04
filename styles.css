@@ -1,0 +1,708 @@
+:root {
+    --bg-main: #f0f2f5;
+    --banner-bg: linear-gradient(135deg, #6f42c1, #4a5cf6);
+    --card-bg: #ffffff;
+    --canvas-bg: #15151e;
+    --btn-blue: #0d6efd;
+    --btn-red: #dc3545;
+    --btn-green: #198754;
+    --badge-bg: #20c997;
+    --btn-purple: #7928ca;
+    --text-blue: #0070f3;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: #333;
+}
+
+.top-banner {
+    background: var(--banner-bg);
+    color: white;
+    padding: 15px 25px;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+    text-align: center;
+}
+
+/* Diseño centrado a pantalla completa sin panel lateral */
+.full-layout {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.demo-section {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.title-row h2 { margin: 0; font-size: 1.3em; }
+
+.icon-number {
+    background: #e9ecef;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #495057;
+}
+
+.section-header p {
+    color: #6c757d;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.badge {
+    background-color: var(--badge-bg);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.btn {
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btn-blue { background-color: var(--btn-blue); }
+.btn-red { background-color: var(--btn-red); }
+.btn-green { background-color: var(--btn-green); }
+.btn-purple { background-color: var(--btn-purple); }
+
+.glow-btn {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(121, 40, 202, 0.4); }
+    70% { box-shadow: 0 0 0 12px rgba(121, 40, 202, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(121, 40, 202, 0); }
+}
+
+input[type="text"], input[type="range"] {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.canvas-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    background-color: var(--canvas-bg);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* EFECTOS PASO 2 */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to bottom, #fcfcfc, #f1f3f5);
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 20px 0;
+    margin-top: 10px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    transition: transform 0.2s ease;
+}
+
+.stat-value.pop {
+    transform: scale(1.4);
+    color: var(--btn-purple);
+}
+
+.text-purple { color: var(--btn-purple); }
+.text-blue { color: var(--text-blue); }
+
+.stat-label {
+    font-size: 0.8em;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+/* EFECTOS PASO 3 (DOM PRO CON 2 EFECTOS) */
+.dom-demo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.demo-box {
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, #0070f3, #7928ca);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 1.3em;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0, 112, 243, 0.4);
+}
+
+/* EFECTO 1 PASO 3: Neón 3D Circular */
+.highlight-effect {
+    background: linear-gradient(135deg, #f53803, #f50057) !important;
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 0 0 35px rgba(245, 56, 3, 0.8), inset 0 0 15px rgba(255,255,255,0.5) !important;
+    border-radius: 50% !important;
+}
+
+/* EFECTO 2 PASO 3: Dribble 3D Avanzado */
+.pulse-effect {
+    animation: superDribble 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes superDribble {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    100% { transform: translateY(-45px) scale(1.12) rotate(-15deg); filter: hue-rotate(120deg); }
+}
+
+.error-msg {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin-left: 10px;
+    font-weight: bold;
+    display: none;
+}
+.error-msg.show { display: inline; }
+.input-error {
+    border: 2px solid #dc3545 !important;
+    background-color: #f8d7da;
+}
+
+/* PASO 5 (DASHBOARD) */
+.perf-dashboard {
+    background-color: #1a1a24;
+    border-radius: 12px;
+    padding: 25px;
+    color: white;
+    box-shadow: inset 0 2px 15px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.perf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2a2a38;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.perf-header h3 {
+    margin: 0;
+    color: #4dc9e6;
+}
+
+.health-badge {
+    background-color: #20c997;
+    color: #1a1a24;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.perf-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.perf-stat-box {
+    flex: 1;
+    background-color: #222230;
+    border-radius: 8px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.perf-val {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #4dc9e6;
+}
+
+.perf-stat-box .perf-label {
+    font-size: 0.75em;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.perf-chart-container {
+    background-color: #111118;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.chart-title {
+    font-size: 0.75em;
+    color: #94a3b8;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#fpsChart {
+    width: 100%;
+    height: 100px;
+    display: block;
+}
+
+.perf-memory-bar {
+    background-color: #111118;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.progress-bg {
+    width: 100%;
+    height: 15px;
+    background-color: #222230;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #20c997;
+    transition: width 0.3s, background-color 0.3s;
+}:root {
+    --bg-main: #f0f2f5;
+    --banner-bg: linear-gradient(135deg, #ff6b35, #1d428a);
+    --card-bg: #ffffff;
+    --canvas-bg: #0e1626;
+    --btn-blue: #0d6efd;
+    --btn-red: #dc3545;
+    --btn-green: #198754;
+    --badge-bg: #20c997;
+    --btn-purple: #ff6b35;
+    --text-blue: #1d428a;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: #333;
+}
+
+.top-banner {
+    background: var(--banner-bg);
+    color: white;
+    padding: 15px 25px;
+    font-weight: bold;
+    font-size: 1.15em;
+    box-shadow: 0 4px 15px rgba(29, 66, 138, 0.3);
+    text-align: center;
+}
+
+.full-layout {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.demo-section {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.title-row h2 { margin: 0; font-size: 1.3em; }
+
+.icon-number {
+    background: #e9ecef;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #495057;
+}
+
+.section-header p {
+    color: #6c757d;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.badge {
+    background-color: var(--badge-bg);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.btn {
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btn-blue { background-color: var(--btn-blue); }
+.btn-red { background-color: var(--btn-red); }
+.btn-green { background-color: var(--btn-green); }
+.btn-purple { background-color: var(--btn-purple); }
+
+.glow-btn {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.5); }
+    70% { box-shadow: 0 0 0 12px rgba(255, 107, 53, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+}
+
+input[type="text"], input[type="range"] {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.canvas-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    background-color: var(--canvas-bg);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+}
+
+/* ESTILOS PASO 2 */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to bottom, #fcfcfc, #f1f3f5);
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 20px 0;
+    margin-top: 10px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    transition: transform 0.2s ease;
+}
+
+.stat-value.pop {
+    transform: scale(1.4);
+    color: var(--btn-purple);
+}
+
+.text-purple { color: var(--btn-purple); }
+.text-blue { color: var(--text-blue); }
+
+.stat-label {
+    font-size: 0.8em;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+/* ESTILOS PASO 3 (DOM DEPORTIVO) */
+.dom-demo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.demo-box {
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, #1d428a, #ff6b35);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 1.3em;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(29, 66, 138, 0.4);
+}
+
+/* Efecto 1 Paso 3: Neón Deportivo Circular */
+.highlight-effect {
+    background: linear-gradient(135deg, #ff6b35, #f50057) !important;
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 0 0 35px rgba(255, 107, 53, 0.9), inset 0 0 15px rgba(255,255,255,0.6) !important;
+    border-radius: 50% !important;
+}
+
+/* Efecto 2 Paso 3: Dribble Cancha */
+.pulse-effect {
+    animation: superDribble 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes superDribble {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    100% { transform: translateY(-45px) scale(1.12) rotate(-15deg); filter: hue-rotate(90deg); }
+}
+
+.error-msg {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin-left: 10px;
+    font-weight: bold;
+    display: none;
+}
+.error-msg.show { display: inline; }
+.input-error {
+    border: 2px solid #dc3545 !important;
+    background-color: #f8d7da;
+}
+
+/* ESTILOS PASO 5 (SCOUTING) */
+.perf-dashboard {
+    background-color: #0e1626;
+    border-radius: 12px;
+    padding: 25px;
+    color: white;
+    box-shadow: inset 0 2px 15px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.perf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.perf-header h3 {
+    margin: 0;
+    color: #38bdf8;
+}
+
+.health-badge {
+    background-color: #20c997;
+    color: #0e1626;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.perf-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.perf-stat-box {
+    flex: 1;
+    background-color: #172033;
+    border-radius: 8px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.perf-val {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.perf-stat-box .perf-label {
+    font-size: 0.75em;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.perf-chart-container {
+    background-color: #0b111c;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.chart-title {
+    font-size: 0.75em;
+    color: #94a3b8;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#fpsChart {
+    width: 100%;
+    height: 100px;
+    display: block;
+}
+
+.perf-memory-bar {
+    background-color: #0b111c;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.progress-bg {
+    width: 100%;
+    height: 15px;
+    background-color: #172033;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #20c997;
+    transition: width 0.3s, background-color 0.3s;
+}
